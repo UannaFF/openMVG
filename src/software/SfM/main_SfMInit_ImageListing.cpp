@@ -307,10 +307,14 @@ int main(int argc, char **argv)
     if (!openMVG::image::ReadImageHeader(sImageFilename.c_str(), &imgHeader))
       continue; // image cannot be read
 
+    //std::cout << "header: " << imgHeader << std::endl;
     width = imgHeader.width;
     height = imgHeader.height;
+
     ppx = width / 2.0;
     ppy = height / 2.0;
+
+    std::cout << "Width and height: " << width << " - " << height << std::endl;
 
 
     // Consider the case where the focal is provided manually
@@ -352,7 +356,10 @@ int main(int argc, char **argv)
           {
             // The camera model was found in the database so we can compute it's approximated focal length
             const double ccdw = datasheet.sensorSize_;
+            std::cout << "what we read from the database: " << ccdw << std::endl;
+            std::cout << "what we read from the exifReader: " << exifReader->getFocal() << std::endl;
             focal = std::max ( width, height ) * exifReader->getFocal() / ccdw;
+            std::cout << "calculated focal: " << focal << std::endl;
           }
           else
           {
@@ -476,6 +483,8 @@ int main(int argc, char **argv)
   {
     return EXIT_FAILURE;
   }
+
+  std::cout << "focal: " << focal << std::endl;
 
   std::cout << std::endl
     << "SfMInit_ImageListing report:\n"

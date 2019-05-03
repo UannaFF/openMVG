@@ -53,10 +53,8 @@ int main(int argc, char **argv) {
       return EXIT_FAILURE;
   }
 
-  const string jpg_filenameL = stlplus::folder_up(string(THIS_SOURCE_DIR))
-    + "/imageData/StanfordMobileVisualSearch/Ace_0.png";
-  const string jpg_filenameR = stlplus::folder_up(string(THIS_SOURCE_DIR))
-    + "/imageData/StanfordMobileVisualSearch/Ace_1.png";
+  const string jpg_filenameL = stlplus::folder_up("/home/anigomez/work/QopiusLabs/AnnaG/PairOrbbecDSLR/1_DSLR.jpg");
+  const string jpg_filenameR = stlplus::folder_up("/home/anigomez/work/QopiusLabs/AnnaG/PairOrbbecDSLR/1_ORBBEC.jpg");
 
   Image<unsigned char> imageL, imageR;
   ReadImage(jpg_filenameL.c_str(), &imageL);
